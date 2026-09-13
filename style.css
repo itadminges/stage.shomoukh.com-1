@@ -552,10 +552,25 @@ button {
   transition: all var(--transition-fast);
 }
 
-.audience-pills .pill-btn:hover {
+.audience-pills .pill-btn:first-child {
   background: var(--shomoukh-coral);
-  color: var(--shomoukh-white);
   border-color: var(--shomoukh-coral);
+  color: var(--shomoukh-white);
+}
+
+.audience-pills .pill-btn:nth-child(2) {
+  background: var(--shomoukh-yellow);
+  border-color: var(--shomoukh-yellow);
+  color: var(--shomoukh-primary);
+}
+
+.audience-pills .pill-btn:nth-child(n + 3) {
+  display: none;
+}
+
+.audience-pills .pill-btn:hover {
+  filter: brightness(0.94);
+  transform: translateY(-1px);
 }
 
 .menu-close-btn {
@@ -589,7 +604,7 @@ button {
 
 /* Drawer Quick Navigation Strip */
 .drawer-quick-strip {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
@@ -694,6 +709,12 @@ button {
 
 .drawer-action-link.drawer-action-yellow:hover {
   color: var(--shomoukh-primary);
+}
+
+/* These actions already appear as compact buttons in the drawer header. */
+.drawer-item-action:has(.drawer-action-coral),
+.drawer-item-action:has(.drawer-action-yellow) {
+  display: none;
 }
 
 .drawer-menu-list {
