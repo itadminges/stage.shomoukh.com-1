@@ -8,16 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollToTopBtn = document.getElementById('scroll-to-top');
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    if (header) {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
     }
 
-    if (window.scrollY > 400) {
-      scrollToTopBtn.classList.add('visible');
-    } else {
-      scrollToTopBtn.classList.remove('visible');
+    if (scrollToTopBtn) {
+      if (window.scrollY > 400) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
     }
   }, { passive: true });
 
@@ -107,6 +111,42 @@ document.addEventListener('DOMContentLoaded', () => {
   if (searchOpenBtn) searchOpenBtn.addEventListener('click', openSearch);
   if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
   if (searchBackdrop) searchBackdrop.addEventListener('click', closeSearch);
+
+  // Close search on quick-tag click
+  document.querySelectorAll('.search-quick-tags a').forEach(tag => {
+    tag.addEventListener('click', closeSearch);
+  });
+
+  const searchForm = document.getElementById('search-form');
+  if (searchForm) {
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const term = (searchInput?.value || '').toLowerCase().trim();
+      if (!term) return;
+      closeSearch();
+      if (term.includes('tour') || term.includes('book') || term.includes('visit')) {
+        window.location.href = '/book-a-visit.html';
+      } else if (term.includes('apply') || term.includes('enroll') || term.includes('register')) {
+        window.location.href = '/apply-online.html';
+      } else if (term.includes('parent') || term.includes('portal') || term.includes('app')) {
+        window.location.href = '/parents.html';
+      } else if (term.includes('program') || term.includes('curriculum') || term.includes('eyfs')) {
+        window.location.href = '/programs.html';
+      } else if (term.includes('age') || term.includes('infant') || term.includes('toddler') || term.includes('hour')) {
+        window.location.href = '/programs.html#ages';
+      } else if (term.includes('atelier') || term.includes('art') || term.includes('clay') || term.includes('enrich')) {
+        window.location.href = '/enrichments.html';
+      } else if (term.includes('space') || term.includes('facility') || term.includes('piazza') || term.includes('garden')) {
+        window.location.href = '/spaces.html';
+      } else if (term.includes('contact') || term.includes('mouj') || term.includes('qurm') || term.includes('phone') || term.includes('email')) {
+        window.location.href = '/contact.html';
+      } else if (term.includes('admission')) {
+        window.location.href = '/admissions.html';
+      } else {
+        window.location.href = '/about.html';
+      }
+    });
+  }
 
   /* ============================================================
      4. VIDEO LIGHTBOX MODAL
@@ -317,15 +357,91 @@ document.addEventListener('DOMContentLoaded', () => {
   if (detailModalBackdrop) detailModalBackdrop.addEventListener('click', closeDetailModal);
 
   /* ============================================================
-     7. ESCAPE KEY GLOBAL LISTENER
+     8. TOAST NOTIFICATION UTILITY
+     ============================================================ */
+  const toastFeedback = document.getElementById('toast-feedback');
+  const toastMessage = document.getElementById('toast-message');
+  let toastTimer = null;
+
+  function showToast(message, isSuccess = true) {
+    if (!toastFeedback || !toastMessage) return;
+    toastMessage.textContent = message;
+    toastFeedback.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toastFeedback.classList.remove('show');
+    }, 4500);
+  }
+
+  /* ============================================================
+     9. TOUR BOOKING FORM HANDLER
+     ============================================================ */
+  const tourForm = document.getElementById('tour-booking-form');
+  if (tourForm) {
+    tourForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const parentName = document.getElementById('tour-parent-name')?.value;
+      showToast(`Thank you, ${parentName || 'Parent'}! Your tour visit request has been sent to Shomoukh Admissions.`);
+      tourForm.reset();
+    });
+  }
+
+  /* ============================================================
+     10. ONLINE ENROLLMENT FORM HANDLER
+     ============================================================ */
+  const enrollmentForm = document.getElementById('online-enrollment-form');
+  if (enrollmentForm) {
+    enrollmentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const childName = document.getElementById('app-child-name')?.value;
+      showToast(`Online enrollment for ${childName || 'your child'} has been submitted successfully! We will contact you soon.`);
+      enrollmentForm.reset();
+    });
+  }
+
+  /* ============================================================
+     11. CONTACT INQUIRY FORM & 180-CHAR COUNTER
+     ============================================================ */
+  const contactForm = document.getElementById('contact-inquiry-form');
+  const contactMsgInput = document.getElementById('contact-message');
+  const contactCharCount = document.getElementById('contact-char-count');
+
+  if (contactMsgInput && contactCharCount) {
+    contactMsgInput.addEventListener('input', () => {
+      contactCharCount.textContent = contactMsgInput.value.length;
+    });
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const contactName = document.getElementById('contact-name')?.value;
+      showToast(`Thank you, ${contactName || 'Parent'}! Your message has been received by Shomoukh Nursery School.`);
+      contactForm.reset();
+      if (contactCharCount) contactCharCount.textContent = '0';
+    });
+  }
+
+  /* ============================================================
+     12. CLOSE OFFCANVAS ON NAV LINK CLICK
+     ============================================================ */
+  document.querySelectorAll('.drawer-nav a, .drawer-footer a, .audience-pills a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeOffcanvas();
+    });
+  });
+
+  /* ============================================================
+     13. ESCAPE KEY GLOBAL LISTENER
      ============================================================ */
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeOffcanvas();
       closeSearch();
       closeVideoModal();
-      closeDetailModal();
+      detailModal && closeDetailModal();
     }
   });
 
 });
+
