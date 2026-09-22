@@ -181,24 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (videoModalBackdrop) videoModalBackdrop.addEventListener('click', closeVideoModal);
 
   /* ============================================================
-     5. HERO BACKGROUND VIDEO CONTROL
+     5. HERO & DRONE BACKGROUND VIDEO CONTROLS
      ============================================================ */
   const heroBgVideo = document.getElementById('hero-bg-video');
   const heroVideoToggleBtn = document.getElementById('hero-video-toggle-btn');
-
-  if (heroBgVideo) {
-    heroBgVideo.addEventListener('timeupdate', () => {
-      if (heroBgVideo.duration && heroBgVideo.currentTime >= heroBgVideo.duration - 0.25) {
-        heroBgVideo.currentTime = 0;
-        heroBgVideo.play().catch(() => {});
-      }
-    });
-
-    heroBgVideo.addEventListener('ended', () => {
-      heroBgVideo.currentTime = 0;
-      heroBgVideo.play().catch(() => {});
-    });
-  }
 
   if (heroVideoToggleBtn && heroBgVideo) {
     heroVideoToggleBtn.addEventListener('click', () => {
@@ -220,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'RESEARCH ATELIER',
       title: 'Clay Atelier',
       desc: 'Children experiment with clay, a soft and natural material with a smooth texture that can be shaped by the gestures of their hands or using various sculpting tools.',
-      img: '/images/atelier-clay.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1762549992/gpsedu/wxwwmea1fiblq2qbc5n7/_L7A5368-min.jpg',
       bullets: [
         'Hands-on tactile sensory exploration with natural clay',
         'Fostering fine motor skills, hand gestures, and tool usage',
@@ -232,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'EXPRESSION',
       title: 'Art Atelier',
       desc: 'Children have access to stimulating resources and are encouraged to use multiple symbolic languages, tools, and materials to express themselves creatively.',
-      img: '/images/atelier-art.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1762790179/gpsedu/jbjkyhvhhdckberabg3j/GPS-80-min.jpg',
       bullets: [
         'Rich variety of paints, pastels, natural dyes, and papers',
         'Encouraging individual symbolic expressions and storytelling',
@@ -244,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'INNOVATION',
       title: 'Digital & Light Atelier',
       desc: 'Children use light in different forms alongside analogical and digital tools to investigate new connections, learning strategies, logic, and imagination.',
-      img: '/images/atelier-digital.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1753102230/gpsedu/x7yzscfrbzencagprgz5/IMG_4269.jpg',
       bullets: [
         'Light tables, projectors, shadows, and color filters',
         'Exploration of patterns, reflection, and optical science',
@@ -256,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'EXPLORATION',
       title: 'Project-Based Learning',
       desc: 'Following a project approach, children explore their own ideas and make meaningful connections with the world around them generated through brainstorming.',
-      img: '/images/atelier-project.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1764101562/wchujg2ut2ttynk34nvv/peprallycoeds.jpg',
       bullets: [
         'Child-led topics generated from everyday observations',
         'Deep inquiry spanning weeks of collaborative research',
@@ -268,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'PRETEND PLAY',
       title: 'Tiny Town',
       desc: 'A dedicated pretend play area that helps children learn about themselves, balance their own ideas with others, and foster social skills.',
-      img: '/images/atelier-tinytown.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1762788974/gpsedu/uqtm5dpz2mggxqgpuill/IMG_7919.jpg',
       bullets: [
         'Miniature town setup for imaginative roleplay',
         'Developing social negotiation and empathy with peers',
@@ -280,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'DEVELOPMENT',
       title: 'Sensory Play',
       desc: 'Engaging activities that stimulate the senses, supporting brain development, problem-solving strategies, and language acquisition.',
-      img: '/images/atelier-sensory.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1753102232/gpsedu/n4kluvbpuubh9zvw50q4/9F9A33984.jpg',
       bullets: [
         'Water tables, sand kitchens, and organic textures',
         'Stimulating neural pathways and cognitive focus',
@@ -292,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'HARMONY',
       title: 'Music & Movement',
       desc: 'Music activities balance the body and mind and improve children’s ability to learn. Children are exposed to music from a young age to develop all their potential.',
-      img: '/images/atelier-music.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1762789616/gpsedu/mb587llegan0zk4fiq2h/1I3A3319-2-min.jpg',
       bullets: [
         'Rhythm instruments, singing, and listening games',
         'Auditory processing and pattern recognition',
@@ -304,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
       category: 'CONFIDENCE',
       title: 'Drama, Puppetry & ECA / PE',
       desc: 'Through roleplay and puppetry, students act out favorite stories. Extracurricular physical education and sports build skills and social bonds.',
-      img: '/images/atelier-sports.jpg',
+      img: 'https://resources.finalsite.net/images/f_auto,q_auto/v1753102375/gpsedu/fyzcfvkbjfygf7yfeusg/untitled-421.jpg',
       bullets: [
         'Story dramatization and puppet theater',
         'Physical education games building balance and strength',

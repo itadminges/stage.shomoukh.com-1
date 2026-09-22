@@ -44,17 +44,17 @@
   --shomoukh-border-light: rgba(28, 58, 71, 0.08);
   --shomoukh-border-medium: rgba(28, 58, 71, 0.20);
   --shomoukh-border-white: rgba(255, 255, 255, 0.20);
-  
+
   /* Typography */
   --font-body: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-script: 'Caveat', cursive;
-  
+
   /* Transitions & Shadows */
   --transition-fast: 0.25s ease;
   --transition-normal: 0.35s ease;
   --transition-smooth: 0.5s ease;
-  
+
   --shadow-sm: 0 4px 16px rgba(28, 58, 71, 0.06);
   --shadow-md: 0 8px 30px rgba(28, 58, 71, 0.06);
   --shadow-lg: 0 16px 40px rgba(28, 58, 71, 0.10);
@@ -66,7 +66,9 @@
 }
 
 /* CSS Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -86,7 +88,8 @@ body {
   overflow-x: hidden;
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -144,8 +147,13 @@ button {
   color: var(--shomoukh-white) !important;
 }
 
-.mt-30 { margin-top: 30px; }
-.mt-40 { margin-top: 40px; }
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
 
 /* Section Headings */
 .section-header {
@@ -483,17 +491,23 @@ button {
 }
 
 .drawer-statue-img {
-  max-width: 85%;
-  max-height: 240px;
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 12px 28px rgba(27, 43, 40, 0.15);
-  border: 3px solid var(--shomoukh-white);
-  transition: transform var(--transition-normal);
+  max-width: 80%;
+  max-height: 65vh;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+  animation: floatStatue 6s ease-in-out infinite;
 }
 
-.drawer-statue-img:hover {
-  transform: scale(1.02);
+@keyframes floatStatue {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .drawer-art-tagline {
@@ -1096,12 +1110,10 @@ button {
 .hero-overlay-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(28, 58, 71, 0.55) 0%,
-    rgba(20, 42, 52, 0.70) 50%,
-    rgba(14, 28, 35, 0.88) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(28, 58, 71, 0.55) 0%,
+      rgba(20, 42, 52, 0.70) 50%,
+      rgba(14, 28, 35, 0.88) 100%);
   z-index: 2;
 }
 
@@ -1124,47 +1136,38 @@ button {
 
 .hero-title {
   color: var(--shomoukh-white);
-  font-size: clamp(1.65rem, 2.8vw, 2.75rem);
+  font-size: clamp(2.8rem, 6.2vw, 5.2rem);
   font-weight: 800;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  text-wrap: balance;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-}
-
-.hero-title .script-accent-gold {
-  font-size: clamp(3.5rem, 7.75vw, 6.5rem);
-  line-height: 1;
-  vertical-align: middle;
-  margin: 0 8px;
 }
 
 .hero-subtitle {
   color: var(--shomoukh-warm-bg);
-  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
   font-weight: 500;
-  letter-spacing: 0.03em;
-  text-wrap: balance;
-  margin-bottom: 32px;
+  letter-spacing: 0.04em;
+  margin-bottom: 36px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-play-video {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   background: var(--shomoukh-coral);
   border: 2px solid var(--shomoukh-coral);
   color: var(--shomoukh-white);
-  padding: 10px 24px 10px 14px;
+  padding: 14px 34px 14px 18px;
   border-radius: 50px;
-  font-size: 0.84rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   transition: all var(--transition-normal);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .btn-play-video:hover {
@@ -1176,15 +1179,15 @@ button {
 }
 
 .play-icon-circle {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   background: var(--shomoukh-white);
   color: var(--shomoukh-coral);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 1rem;
   transition: transform var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
 }
 
@@ -1309,7 +1312,7 @@ button {
 .frame-explore-section {
   background-color: var(--shomoukh-warm-bg);
   background-image: radial-gradient(circle at 100% 0%, rgba(242, 143, 121, 0.08), transparent 50%),
-                    radial-gradient(circle at 0% 100%, rgba(242, 214, 117, 0.08), transparent 40%);
+    radial-gradient(circle at 0% 100%, rgba(242, 214, 117, 0.08), transparent 40%);
 }
 
 .cards-grid-three {
@@ -1486,12 +1489,10 @@ button {
 .pursue-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(28, 58, 71, 0.12) 0%,
-    rgba(20, 42, 52, 0.65) 45%,
-    rgba(14, 28, 35, 0.92) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(28, 58, 71, 0.12) 0%,
+      rgba(20, 42, 52, 0.65) 45%,
+      rgba(14, 28, 35, 0.92) 100%);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -1909,7 +1910,7 @@ button {
   color: var(--shomoukh-body);
 }
 
-.frame-hold-section .stat-box > div:last-child {
+.frame-hold-section .stat-box>div:last-child {
   color: var(--shomoukh-primary) !important;
 }
 
@@ -1979,7 +1980,7 @@ button {
 .frame-treasure-section {
   background-color: var(--shomoukh-warm-bg);
   background-image: radial-gradient(circle at 10% 20%, rgba(242, 143, 121, 0.08), transparent 40%),
-                    radial-gradient(circle at 90% 80%, rgba(242, 214, 117, 0.08), transparent 40%);
+    radial-gradient(circle at 90% 80%, rgba(242, 214, 117, 0.08), transparent 40%);
 }
 
 .alumnae-slider-wrapper {
@@ -2007,8 +2008,13 @@ button {
   transition: all var(--transition-fast);
 }
 
-.slider-arrow-btn.prev-btn { left: -26px; }
-.slider-arrow-btn.next-btn { right: -26px; }
+.slider-arrow-btn.prev-btn {
+  left: -26px;
+}
+
+.slider-arrow-btn.next-btn {
+  right: -26px;
+}
 
 .slider-arrow-btn:hover {
   background: var(--shomoukh-coral);
@@ -2733,7 +2739,8 @@ button {
 }
 
 .footer-divider-line {
-  display: none; /* Already handled cleanly by .footer-top-row border-bottom */
+  display: none;
+  /* Already handled cleanly by .footer-top-row border-bottom */
 }
 
 .footer-cols-grid,
@@ -3112,7 +3119,7 @@ textarea.form-control {
   .pursue-grid-eight {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .footer-cols-grid,
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3124,28 +3131,28 @@ textarea.form-control {
   .utility-nav {
     display: none;
   }
-  
+
   .cards-grid-three {
     grid-template-columns: 1fr;
   }
-  
+
   .hold-two-col-layout {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .offcanvas-left {
     display: none;
   }
-  
+
   .offcanvas-right {
     padding: 30px 24px;
   }
-  
+
   .news-main-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .cta-banner-grid {
     grid-template-columns: 1fr;
   }
@@ -3153,7 +3160,7 @@ textarea.form-control {
   .cta-action-tile {
     padding: 28px 24px;
   }
-  
+
   .alumna-card {
     flex: 0 0 calc(50% - 14px);
   }
@@ -3161,12 +3168,12 @@ textarea.form-control {
   .detail-modal-body {
     grid-template-columns: 1fr;
   }
-  
+
   .detail-modal-image-col {
     min-height: 240px;
     max-height: 280px;
   }
-  
+
   .detail-modal-text-col {
     padding: 28px;
   }
@@ -3177,49 +3184,49 @@ textarea.form-control {
     padding-top: 60px;
     padding-bottom: 60px;
   }
-  
+
   .hero-bottom-bar {
     flex-direction: column;
     gap: 16px;
     bottom: 20px;
   }
-  
+
   .hero-bottom-actions {
     width: 100%;
     justify-content: center;
   }
-  
+
   .pursue-grid-eight {
     grid-template-columns: 1fr;
   }
-  
+
   .stats-grid-card {
     grid-template-columns: 1fr;
   }
-  
+
   .alumna-card {
     flex: 0 0 100%;
   }
-  
+
   .footer-top-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
-  
+
   .footer-cols-grid,
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  
+
   .footer-bottom-row,
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
-  
+
   .drone-text-card {
     padding: 30px 20px;
   }
@@ -3823,16 +3830,16 @@ textarea.form-control {
   .key-features-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .booking-layout,
   .contact-layout {
     grid-template-columns: 1fr;
   }
-  
+
   .booking-info-box {
     position: static;
   }
-  
+
   .parents-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -3842,16 +3849,16 @@ textarea.form-control {
   .key-features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .form-grid-two {
     grid-template-columns: 1fr;
   }
-  
+
   .application-card-wrapper,
   .form-panel-card {
     padding: 24px 18px;
   }
-  
+
   .parents-grid {
     grid-template-columns: 1fr;
   }
@@ -4228,24 +4235,30 @@ textarea.form-control {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
   .steps-enrollment-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+
   .drone-text-card {
     padding: 36px 32px;
   }
+
   .checklist-4col-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .pillars-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .features-3col-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .portal-features-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -4256,22 +4269,28 @@ textarea.form-control {
   .subpage-hero {
     padding: 110px 16px 45px 16px;
   }
+
   .subpage-hero-title {
     font-size: clamp(1.8rem, 5vw, 2.8rem);
   }
+
   .campuses-2col-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
   .drone-text-card {
     padding: 28px 20px;
   }
+
   .drone-content-container {
     padding: 40px 16px;
   }
+
   .offcanvas-left {
     display: none;
   }
+
   .offcanvas-right {
     padding: 30px 24px;
   }
@@ -4281,9 +4300,11 @@ textarea.form-control {
   .steps-enrollment-grid {
     grid-template-columns: 1fr;
   }
+
   .checklist-4col-grid {
     grid-template-columns: 1fr;
   }
+
   .portal-features-grid {
     grid-template-columns: 1fr;
   }
@@ -4438,11 +4459,7 @@ textarea.form-control {
   }
 
   .hero-title {
-    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
-  }
-
-  .hero-title .script-accent-gold {
-    font-size: clamp(2.4rem, 11vw, 3.5rem);
+    font-size: clamp(2rem, 10vw, 3rem);
   }
 
   .hero-cta-group {
@@ -4596,4 +4613,5 @@ textarea.form-control {
   .cta-action-tile {
     padding: 22px 18px;
   }
+}
 }
