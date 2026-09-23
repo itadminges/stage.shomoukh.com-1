@@ -4383,6 +4383,8 @@ textarea.form-control {
   }
 
   .menu-close-btn {
+    grid-column: 2;
+    justify-self: end;
     min-height: 44px;
     padding: 8px 14px;
   }
@@ -4613,5 +4615,4 @@ textarea.form-control {
   .cta-action-tile {
     padding: 22px 18px;
   }
-}
 }
